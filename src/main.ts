@@ -112,8 +112,8 @@ const calcularPrecioTotalParticular = (reserva: Reserva): number => {
       calcularPrecioSubTotalParticular(reserva),
       calcularPrecioTotalParticular(reserva)
     );
-    this.precioSubtotal = calcularPrecioSubTotalParticular(reserva);
-    this.precioTotal = calcularPrecioTotalParticular(reserva);
+    this.precioSubtotal = Math.round(calcularPrecioSubTotalParticular(reserva));
+    this.precioTotal = Math.round(calcularPrecioTotalParticular(reserva));
   }
   mostrarPrecio(): void {
     console.log(
