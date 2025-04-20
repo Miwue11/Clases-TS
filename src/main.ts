@@ -66,8 +66,8 @@ const calcularPrecioSubtotalTourOperador = (reserva: Reserva): number => {
   const precioHabitacion = 100;
   const precioDesayuno = reserva.desayuno ? 15 : 0;
 
-  const precioConIva = (precioHabitacion + precioDesayuno) * reserva.noches;
-  const precioTotal = precioConIva * reserva.noches;
+  const precioSinIva = (precioHabitacion + precioDesayuno) * reserva.noches;
+  const precioTotal = precioSinIva * reserva.noches;
   precio = precioTotal;
   return precio;
 };
@@ -88,8 +88,8 @@ const calcularPrecioSubTotalParticular = (reserva: Reserva): number => {
   let precio = 0;
   const precioHabitacion = reserva.tipoHabitacion === "standard" ? 100 : 150;
   const precioDesayuno = reserva.desayuno ? 15 : 0;
-  const precioConIva = (precioHabitacion + precioDesayuno) * reserva.noches;
-  const precioTotal = precioConIva * reserva.noches;
+  const precioSinIva = (precioHabitacion + precioDesayuno) * reserva.noches;
+  const precioTotal = precioSinIva * reserva.noches;
   precio = precioTotal;
   return precio;
 };
