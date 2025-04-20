@@ -146,24 +146,24 @@ const calcularPrecioTotalParticular = (reserva: Reserva): number => {
 
 console.log("Calculadora de reservas Particulares");
 const reserva1 = new calculadoraDeParticular(reservas[0]);
-console.log("reserva1");
+console.log("reserva 1:");
 reserva1.mostrarPrecio();
 const reserva2 = new calculadoraDeParticular(reservas[1]);
-console.log("reserva2");
+console.log("reserva 2:");
 reserva2.mostrarPrecio();
 const reserva3 = new calculadoraDeParticular(reservas[2]);
-console.log("reserva3");
+console.log("reserva 3:");
 reserva3.mostrarPrecio();
 
 //*********************************//*********************************//
 
 console.log("Calculadora de reservas Tour Operador");
 const reserva4 = new CalculadoraTourOperador(reservas[0]);
-console.log("reserva1");
+console.log("reserva 1:");
 reserva4.mostrarPrecio();
 const reserva5 = new CalculadoraTourOperador(reservas[1]);
-console.log("reserva2");
+console.log("reserva 2:");
 reserva5.mostrarPrecio();
 const reserva6 = new CalculadoraTourOperador(reservas[2]);
-console.log("reserva3");
+console.log("reserva 3:");
 reserva6.mostrarPrecio();
