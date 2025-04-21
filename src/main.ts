@@ -67,7 +67,7 @@ const calcularPrecioSubtotalTourOperador = (reserva: Reserva): number => {
   const precioDesayuno = reserva.desayuno ? 15 : 0;
 
   const precioSinIva = (precioHabitacion + precioDesayuno) * reserva.noches;
-  const precioTotal = precioSinIva * reserva.noches;
+  const precioTotal = precioSinIva;
   precio = precioTotal;
   return precio;
 };
@@ -79,7 +79,7 @@ const calcularPrecioTotalTourOperador = (reserva: Reserva): number => {
   const precioNoche = calcularPrecioPorPersona(reserva);
   const precioConIva =
     (precioHabitacion + precioDesayuno + precioNoche) * reserva.noches * IVA;
-  const precioTotal = precioConIva * reserva.noches;
+  const precioTotal = precioConIva;
   precio = precioTotal;
   return precio;
 };
@@ -89,7 +89,7 @@ const calcularPrecioSubTotalParticular = (reserva: Reserva): number => {
   const precioHabitacion = reserva.tipoHabitacion === "standard" ? 100 : 150;
   const precioDesayuno = reserva.desayuno ? 15 : 0;
   const precioSinIva = (precioHabitacion + precioDesayuno) * reserva.noches;
-  const precioTotal = precioSinIva * reserva.noches;
+  const precioTotal = precioSinIva;
   precio = precioTotal;
   return precio;
 };
@@ -101,19 +101,18 @@ const calcularPrecioTotalParticular = (reserva: Reserva): number => {
   const precioNoche = calcularPrecioPorPersona(reserva);
   const precioConIva =
     (precioHabitacion + precioDesayuno + precioNoche) * reserva.noches * IVA;
-  const precioTotal = precioConIva * reserva.noches;
+  const precioTotal = precioConIva;
   precio = precioTotal;
   return precio;
 };
 
 /*CASO 1-->*/ class calculadoraDeParticular extends CalculadoraReservas {
   constructor(reserva: Reserva) {
-    super(
-      calcularPrecioSubTotalParticular(reserva),
-      calcularPrecioTotalParticular(reserva)
+    const precioSubtotal = Math.round(
+      calcularPrecioSubTotalParticular(reserva)
     );
-    this.precioSubtotal = Math.round(calcularPrecioSubTotalParticular(reserva));
-    this.precioTotal = Math.round(calcularPrecioTotalParticular(reserva));
+    const precioTotal = Math.round(calcularPrecioTotalParticular(reserva));
+    super(precioSubtotal, precioTotal);
   }
   mostrarPrecio(): void {
     console.log(
@@ -124,16 +123,11 @@ const calcularPrecioTotalParticular = (reserva: Reserva): number => {
 
 /*CASO 2-->*/ class CalculadoraTourOperador extends CalculadoraReservas {
   constructor(reserva: Reserva) {
-    super(
-      calcularPrecioSubtotalTourOperador(reserva),
-      calcularPrecioTotalTourOperador(reserva)
+    const precioSubtotal = Math.round(
+      calcularPrecioSubTotalParticular(reserva)
     );
-    this.precioSubtotal = Math.round(
-      calcularPrecioSubtotalTourOperador(reserva) * 0.85
-    );
-    this.precioTotal = Math.round(
-      calcularPrecioTotalTourOperador(reserva) * 0.85
-    );
+    const precioTotal = Math.round(calcularPrecioTotalParticular(reserva));
+    super(precioSubtotal, precioTotal);
   }
   mostrarPrecio(): void {
     console.log(
